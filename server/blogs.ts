@@ -11,14 +11,13 @@ export async function getBlogs() {
         return allBlogs
     } catch (error) {
         console.log(error);
-        throw error;
+        throw new Error("Failed to fetch blogs");;
     }
 
 }
 export async function createBlog(blogs: Omit<Blog, "id" | "createdAt" | "updatedAt">) {
     try {
-        const newBlog = await db.insert(blog).values(blogs);
-        return newBlog;
+        await db.insert(blog).values(blogs);
     } catch (error) {
         console.log(error);
         return { error: "Failed to create blog" }
@@ -28,8 +27,7 @@ export async function createBlog(blogs: Omit<Blog, "id" | "createdAt" | "updated
 
 export async function updateBlog(id: string, blogs: Omit<Blog, "id" | "createdAt" | "updatedAt">) {
     try {
-        const updateBlog = await db.update(blog).set(blogs).where(eq(blog.id, id));
-        return updateBlog;
+        await db.update(blog).set(blogs).where(eq(blog.id, id));
     } catch (error) {
         console.log(error);
         return { error: "Failed to update blog" }

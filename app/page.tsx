@@ -4,8 +4,16 @@ import { get } from 'http'
 import UsersTable from '@/components/userstable';
 import { Import, MessageCirclePlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import UserForms from '@/components/forms/userforms';
 
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 
 export default async function Home() {
@@ -20,10 +28,25 @@ export default async function Home() {
 
       <div className='flex flex-col gap-4 max-w-6xl mx-auto '>
         <div className='flex flex-row-reverse '>
-          <Button >
-            Add a Blog     <MessageCirclePlus />
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button >
+                Add a Blog     <MessageCirclePlus />
 
-          </Button>
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add new Blog?</DialogTitle>
+                <DialogDescription>
+
+                </DialogDescription>
+                <UserForms />
+              </DialogHeader>
+
+            </DialogContent>
+          </Dialog>
+
         </div>
         <UsersTable />
       </div>
