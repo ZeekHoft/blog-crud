@@ -7,7 +7,8 @@ A modern web application built with **Next.js** and **TypeScript**.
 ## 🛠️ Tech Stack
 - **Framework:** [Next.js](https://nextjs.org/) (App Router)
 - **Styling:** Tailwind CSS
-- **Font:** [Geist](https://vercel.com/font)
+- **Font:** [Shadcn](https://www.shadcn.io)
+- - **DBA:** [Neon]([https://www.shadcn.io](https://neon.com))
 - **Deployment:** [Vercel](https://vercel.com/)
 
 ---
