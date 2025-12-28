@@ -57,10 +57,9 @@ async function UsersTable() {
                             </DialogTrigger>
                             <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle>Are you sure you want to delete this blog?</DialogTitle>
+                                    <DialogTitle>Udating blog!</DialogTitle>
                                     <DialogDescription>
-                                        Warning, after deleting this blog the action can't be undone. Double check to know if you're
-                                        sure about this decision.
+                                        You can update your blog anytime without worry, making mistakes or having better news is always happening.
                                     </DialogDescription>
                                 </DialogHeader>
 

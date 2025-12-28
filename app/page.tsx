@@ -37,9 +37,9 @@ export default async function Home() {
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Add new Blog?</DialogTitle>
+                <DialogTitle>Add new Blog!</DialogTitle>
                 <DialogDescription>
-
+                  Share your thoughts, adventures and stories with us! We're always happy to read what's going on with your lives.
                 </DialogDescription>
                 <UserForms />
               </DialogHeader>
