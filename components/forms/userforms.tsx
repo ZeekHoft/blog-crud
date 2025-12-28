@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
-
+import { blog, Blog } from "@/db/schema"
 
 import {
   Form,
@@ -19,10 +19,11 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "../ui/textarea"
-import { createBlog } from "@/server/blogs"
+import { createBlog, updateBlog } from "@/server/blogs"
 import { useState } from "react"
 import { toast } from "sonner"
 import { useRouter } from 'next/navigation';
+import { create } from "domain"
 
 
 const formSchema = z.object({
@@ -33,18 +34,20 @@ const formSchema = z.object({
 
 })
 
+interface BlogFormProps {
+  blogs?: Blog;
+}
 
-
-export default function UserForms() {
+export default function UserForms({ blogs }: BlogFormProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      username: "",
-      title: "",
-      context: "",
+      email: blogs?.email || "",
+      username: blogs?.username || "",
+      title: blogs?.title || "",
+      context: blogs?.context || "",
 
     }
   })
@@ -57,12 +60,19 @@ export default function UserForms() {
         ...values,
         password: "password121" //default password
       }
-      await createBlog(blogData)
+      if (blogs) {
+        await updateBlog(blogs.id!, blogData);
+      } else {
+        await createBlog(blogData);
+      }
+
+
+
       form.reset();
-      toast.success("Success for a blog!")
+      toast.success(`You've uccessully ${blogs ? "updated" : "added"} your blog!`)
       router.refresh();
     } catch (error) {
-      toast.error("Failed to add blog!")
+      toast.error(`You've Failed to ${blogs ? "updated" : "added"} your blog!`)
     } finally {
       setIsLoading(false);
 
@@ -129,7 +139,7 @@ export default function UserForms() {
 
         <Button disabled={isLoading} type="submit">
 
-          {isLoading ? <Loader2 className="size-4 animate-spin" /> : "Add Blog"}
+          {isLoading ? <Loader2 className="size-4 animate-spin" /> : (`${blogs ? "Update Blog" : "Add Blog"}`)}
         </Button>
       </form>
     </Form>

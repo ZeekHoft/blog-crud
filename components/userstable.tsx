@@ -14,6 +14,15 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import UserForms from './forms/userforms';
 async function UsersTable() {
 
     const blogs = await getBlogs();
@@ -36,9 +45,30 @@ async function UsersTable() {
                         <TableCell > {blog.context}</TableCell>
                         <TableCell> {blog.createdAt?.toLocaleString()}</TableCell>
                         <TableCell> {blog.updatedAt?.toLocaleString()}</TableCell>
-                        <Button variant="outline" >
-                            <Pencil className='size-4' />
-                        </Button>
+
+
+                        <Dialog >
+                            <DialogTrigger asChild>
+
+                                <Button variant="outline" >
+                                    <Pencil className='size-4' />
+                                </Button>
+
+                            </DialogTrigger>
+                            <DialogContent>
+                                <DialogHeader>
+                                    <DialogTitle>Are you sure you want to delete this blog?</DialogTitle>
+                                    <DialogDescription>
+                                        Warning, after deleting this blog the action can't be undone. Double check to know if you're
+                                        sure about this decision.
+                                    </DialogDescription>
+                                </DialogHeader>
+
+                                <UserForms blogs={blog} />
+
+
+                            </DialogContent>
+                        </Dialog>
 
                         <DeleteUserButton blogId={blog.id} />
 
