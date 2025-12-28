@@ -2,7 +2,9 @@
 
 import React from 'react'
 import { getBlogs } from '@/server/blogs'
-
+import { Button } from './ui/button';
+import { Pencil } from 'lucide-react';
+import DeleteUserButton from './deleteuserbutton';
 import {
     Table,
     TableBody,
@@ -23,7 +25,7 @@ async function UsersTable() {
                     <TableHead className="w-[100px]">username</TableHead>
                     <TableHead>title</TableHead>
                     <TableHead>context</TableHead>
-                    <TableHead className="text-right">updated at</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -34,7 +36,11 @@ async function UsersTable() {
                         <TableCell > {blog.context}</TableCell>
                         <TableCell> {blog.createdAt?.toLocaleString()}</TableCell>
                         <TableCell> {blog.updatedAt?.toLocaleString()}</TableCell>
+                        <Button variant="outline" >
+                            <Pencil className='size-4' />
+                        </Button>
 
+                        <DeleteUserButton blogId={blog.id} />
 
                     </TableRow>
                 ))}

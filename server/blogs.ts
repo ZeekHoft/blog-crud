@@ -37,8 +37,7 @@ export async function updateBlog(id: string, blogs: Omit<Blog, "id" | "createdAt
 
 export async function deleteBlog(id: string) {
     try {
-        const deleteBlog = await db.delete(blog).where(eq(blog.id, id));
-        return deleteBlog;
+        await db.delete(blog).where(eq(blog.id, id));
     } catch (error) {
         console.log(error);
         return { error: "Failed to delete blog" }

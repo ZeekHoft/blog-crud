@@ -55,7 +55,7 @@ export default function UserForms() {
     try {
       const blogData = {
         ...values,
-        password: "password121"
+        password: "password121" //default password
       }
       await createBlog(blogData)
       form.reset();
