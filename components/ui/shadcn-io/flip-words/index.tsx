@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { cn } from '@repo/shadcn-ui/lib/utils';
+import { cn } from '@/lib/utils';
 
 type FlipWordsProps = Omit<React.ComponentProps<'span'>, 'children'> & {
   words: string[];

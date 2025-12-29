@@ -14,6 +14,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import FlipAnimation from '@/components/flipanimation';
+
 
 
 export default async function Home() {
@@ -22,7 +24,7 @@ export default async function Home() {
 
   return (
     <div>
-      <h1 className='flex flex-row justify-center text-5xl m-2 '>BLOGS</h1>
+      <div className='flex flex-row justify-center md:text-5xl m-2 text-2xl '> Share to us your <FlipAnimation /></div>
 
 
 
