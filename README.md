@@ -1,6 +1,6 @@
 # 🚀 Next.js Project
 
-A modern web application built with **Next.js** and **TypeScript**.
+A modern web application built with **Next.js** and **TypeScript**. This is a simple Blog website, it has the essential implementaions of a CRUD system, unlike most blog sites this doesn't have a sign up or a login page, so its very open where anyone can delete and edit your posts. This projects is created to understand how CRUD works in web development.
 
 ---
 
