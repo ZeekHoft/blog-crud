@@ -47,7 +47,7 @@ export default function DeleteUserButton({ blogId }: DeleteBlogButtonProps) {
 
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-                <Button variant="destructive">
+                <Button variant="destructive" className="hover:bg-gray-700">
                     <Trash2 className='size-4' />
                 </Button>
             </DialogTrigger>

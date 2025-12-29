@@ -1,10 +1,10 @@
 
-
-import React from 'react'
 import { getBlogs } from '@/server/blogs'
+import React from 'react'
 import { Button } from './ui/button';
-import { Pencil } from 'lucide-react';
+import { Pencil, ShieldAlertIcon, MessageCircle, NotebookPen } from 'lucide-react';
 import DeleteUserButton from './deleteuserbutton';
+import { Blog } from "@/db/schema"
 import {
     Table,
     TableBody,
@@ -23,59 +23,66 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import UserForms from './forms/userforms';
+import {
+    Item,
+    ItemActions,
+    ItemContent,
+    ItemDescription,
+    ItemGroup,
+    ItemMedia,
+    ItemTitle,
+
+} from "@/components/ui/item"
 async function UsersTable() {
 
     const blogs = await getBlogs();
     return (
-        <Table>
-            <TableCaption>BLOG LIST</TableCaption>
-            <TableHeader>
-                <TableRow>
-                    <TableHead className="w-[100px]">username</TableHead>
-                    <TableHead>title</TableHead>
-                    <TableHead>context</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
+        <div className="flex md:w-full flex-col items-start gap-6 p-2">
+            <ItemGroup>
                 {blogs.map((blog) => (
-                    <TableRow key={blog.id}>
-                        <TableCell className='font-bold'> {blog.username}</TableCell>
-                        <TableCell > {blog.title}</TableCell>
-                        <TableCell > {blog.context}</TableCell>
-                        <TableCell> {blog.createdAt?.toLocaleString()}</TableCell>
-                        <TableCell> {blog.updatedAt?.toLocaleString()}</TableCell>
+                    <Item key={blog.id} variant="outline" className='mb-6 items-start py-4'>
+                        <ItemMedia variant="icon">
+                            <MessageCircle />
+                        </ItemMedia>
+                        <ItemContent>
+                            <ItemTitle>{blog.title}</ItemTitle>
+                            <ItemDescription className='line-clamp-none whitespace-pre-wrap break-words'>
+                                {blog.context}
+                            </ItemDescription>
+                        </ItemContent>
+                        <ItemActions className='flex flex-col items-end'>
+                            <Dialog >
+                                <DialogTrigger asChild>
+
+                                    <Button variant="outline" className='bg-green-500 hover:bg-gray-700'>
+                                        <NotebookPen color='white' className='size-4' />
+                                    </Button>
+
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Udating blog!</DialogTitle>
+                                        <DialogDescription>
+                                            You can update your blog anytime without worry, making mistakes or having better news is always happening.
+                                        </DialogDescription>
+                                    </DialogHeader>
+
+                                    <UserForms blogs={blog} />
 
 
-                        <Dialog >
-                            <DialogTrigger asChild>
+                                </DialogContent>
+                            </Dialog>
 
-                                <Button variant="outline" >
-                                    <Pencil className='size-4' />
-                                </Button>
-
-                            </DialogTrigger>
-                            <DialogContent>
-                                <DialogHeader>
-                                    <DialogTitle>Udating blog!</DialogTitle>
-                                    <DialogDescription>
-                                        You can update your blog anytime without worry, making mistakes or having better news is always happening.
-                                    </DialogDescription>
-                                </DialogHeader>
-
-                                <UserForms blogs={blog} />
+                            <DeleteUserButton blogId={blog.id} />
+                        </ItemActions>
+                    </Item>
 
 
-                            </DialogContent>
-                        </Dialog>
-
-                        <DeleteUserButton blogId={blog.id} />
-
-                    </TableRow>
                 ))}
 
-            </TableBody>
-        </Table>
+            </ItemGroup>
+        </div>
+
     )
 }
 

@@ -22,16 +22,20 @@ export default async function Home() {
 
   return (
     <div>
-      <h1>BLOGS</h1>
+      <h1 className='flex flex-row justify-center text-5xl m-2 '>BLOGS</h1>
+
 
 
 
       <div className='flex flex-col gap-4 max-w-6xl mx-auto '>
         <div className='flex flex-row-reverse '>
+
           <Dialog>
-            <DialogTrigger asChild>
-              <Button >
-                Add a Blog     <MessageCirclePlus />
+
+            <DialogTrigger asChild className='fixed bottom-4 md:top-4 md:right-4'>
+              <Button className='mr-2'>
+                Add a Blog
+                <MessageCirclePlus />
 
               </Button>
             </DialogTrigger>
