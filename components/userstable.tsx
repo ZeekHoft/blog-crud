@@ -41,10 +41,14 @@ async function UsersTable() {
             <ItemGroup>
                 {blogs.map((blog) => (
                     <Item key={blog.id} variant="outline" className='mb-6 items-start py-4'>
+
                         <ItemMedia variant="icon">
                             <MessageCircle />
                         </ItemMedia>
+
                         <ItemContent>
+                            <ItemTitle className='mb-5'>{blog.username}</ItemTitle>
+
                             <ItemTitle>{blog.title}</ItemTitle>
                             <ItemDescription className='line-clamp-none whitespace-pre-wrap break-words'>
                                 {blog.context}
