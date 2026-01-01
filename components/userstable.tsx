@@ -46,16 +46,16 @@ async function UsersTable() {
         <ItemGroup>
             {blogs.map((blog) => (
 
-                <Item key={blog.id} variant="outline" className='mb-6 items-start py-4 ml-2 mr-2'>
+                <Item key={blog.id} variant="muted" className='mb-6 items-start py-4 ml-2 mr-2'>
 
                     <ItemMedia variant="icon">
                         <MessageCircle />
                     </ItemMedia>
 
                     <ItemContent>
-                        <ItemTitle className='mb-5'>{blog.username}</ItemTitle>
+                        <ItemTitle className='mb-5 text-xl md:text-2xl '>{blog.username}</ItemTitle>
 
-                        <ItemTitle>{blog.title}</ItemTitle>
+                        <ItemTitle>{blog.title}: </ItemTitle>
                         <ItemDescription className='line-clamp-none whitespace-pre-wrap break-words'>
                             {blog.context}
                         </ItemDescription>

@@ -38,7 +38,9 @@ export default async function Home() {
 
   return (
     <div>
-      <div className='flex flex-row justify-center md:text-5xl m-2 text-2xl '> Share to us your <FlipAnimation /></div>
+      <div className='flex flex-row justify-center md:text-5xl m-2 text-2xl '>
+        <span className='italic'>Likely Blogs</span>
+        , share your <FlipAnimation /></div>
 
 
 
