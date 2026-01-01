@@ -29,7 +29,7 @@ import {
 
 
 
-
+export const dynamic = 'force-dynamic';
 export default async function Home() {
   const blogs = await getBlogs();
   const count: number = blogs.length;

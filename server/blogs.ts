@@ -3,9 +3,10 @@
 import { db } from "@/db/drizzle"
 import { blog, Blog } from "@/db/schema"
 import { eq } from "drizzle-orm";
-
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function getBlogs() {
+    noStore();
     try {
         const allBlogs = await db.select().from(blog);
         return allBlogs
