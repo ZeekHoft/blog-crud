@@ -42,56 +42,55 @@ async function UsersTable() {
     const blogs = await getBlogs();
 
     return (
-        <div className="flex md:w-full flex-col items-start gap-6 p-2">
-            <ItemGroup>
-                {blogs.map((blog) => (
 
-                    <Item key={blog.id} variant="outline" className='mb-6 items-start py-4'>
+        <ItemGroup>
+            {blogs.map((blog) => (
 
-                        <ItemMedia variant="icon">
-                            <MessageCircle />
-                        </ItemMedia>
+                <Item key={blog.id} variant="outline" className='mb-6 items-start py-4'>
 
-                        <ItemContent>
-                            <ItemTitle className='mb-5'>{blog.username}</ItemTitle>
+                    <ItemMedia variant="icon">
+                        <MessageCircle />
+                    </ItemMedia>
 
-                            <ItemTitle>{blog.title}</ItemTitle>
-                            <ItemDescription className='line-clamp-none whitespace-pre-wrap break-words'>
-                                {blog.context}
-                            </ItemDescription>
-                        </ItemContent>
-                        <ItemActions className='flex flex-col items-end'>
-                            <Dialog >
-                                <DialogTrigger asChild>
+                    <ItemContent>
+                        <ItemTitle className='mb-5'>{blog.username}</ItemTitle>
 
-                                    <Button variant="outline" className='bg-green-500 hover:bg-gray-700'>
-                                        <NotebookPen color='white' className='size-4' />
-                                    </Button>
+                        <ItemTitle>{blog.title}</ItemTitle>
+                        <ItemDescription className='line-clamp-none whitespace-pre-wrap break-words'>
+                            {blog.context}
+                        </ItemDescription>
+                    </ItemContent>
+                    <ItemActions className='flex flex-col items-end'>
+                        <Dialog >
+                            <DialogTrigger asChild>
 
-                                </DialogTrigger>
-                                <DialogContent>
-                                    <DialogHeader>
-                                        <DialogTitle>Udating blog!</DialogTitle>
-                                        <DialogDescription>
-                                            You can update your blog anytime without worry, making mistakes or having better news is always happening.
-                                        </DialogDescription>
-                                    </DialogHeader>
+                                <Button variant="outline" className='bg-green-500 hover:bg-gray-700'>
+                                    <NotebookPen color='white' className='size-4' />
+                                </Button>
 
-                                    <UserForms blogs={blog} />
+                            </DialogTrigger>
+                            <DialogContent>
+                                <DialogHeader>
+                                    <DialogTitle>Udating blog!</DialogTitle>
+                                    <DialogDescription>
+                                        You can update your blog anytime without worry, making mistakes or having better news is always happening.
+                                    </DialogDescription>
+                                </DialogHeader>
 
-
-                                </DialogContent>
-                            </Dialog>
-
-                            <DeleteUserButton blogId={blog.id} />
-                        </ItemActions>
-                    </Item>
+                                <UserForms blogs={blog} />
 
 
-                ))}
+                            </DialogContent>
+                        </Dialog>
 
-            </ItemGroup>
-        </div>
+                        <DeleteUserButton blogId={blog.id} />
+                    </ItemActions>
+                </Item>
+
+
+            ))}
+
+        </ItemGroup>
 
     )
 }
