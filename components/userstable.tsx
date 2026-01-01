@@ -46,7 +46,7 @@ async function UsersTable() {
         <ItemGroup>
             {blogs.map((blog) => (
 
-                <Item key={blog.id} variant="outline" className='mb-6 items-start py-4'>
+                <Item key={blog.id} variant="outline" className='mb-6 items-start py-4 ml-2 mr-2'>
 
                     <ItemMedia variant="icon">
                         <MessageCircle />
