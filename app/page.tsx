@@ -16,10 +16,24 @@ import {
 } from "@/components/ui/dialog"
 import FlipAnimation from '@/components/flipanimation';
 
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemMedia,
+  ItemTitle,
+
+} from "@/components/ui/item"
+
+
 
 
 export default async function Home() {
   const blogs = await getBlogs();
+  const count: number = blogs.length;
+  console.log(count)
 
 
   return (
@@ -34,12 +48,17 @@ export default async function Home() {
 
           <Dialog>
 
-            <DialogTrigger asChild className='fixed bottom-4 md:top-4 md:right-4'>
-              <Button className='mr-2'>
-                Add a Blog
-                <MessageCirclePlus />
+            <DialogTrigger asChild className='fixed z-100 bottom-0 right-0 w-[100] md:w-[170] md:h-[70] md:top-0 md:right-0  '>
 
-              </Button>
+              <Item variant="outline" className='bg-yellow-300 hover:shadow-md transition-all cursor-pointer  px-6 py-2'>
+                <ItemActions className="flex items-center justify-center gap-3">
+                  <div className="flex flex-col items-start leading-tight">
+                    <span className="text-[10px] uppercase tracking-wider opacity-70">Total blogs: {count.toString()}</span>
+                    <span className="font-bold">Add a Blog</span>
+                  </div>
+                  <MessageCirclePlus className="w-6 h-6" />
+                </ItemActions>
+              </Item>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>

@@ -33,13 +33,19 @@ import {
     ItemTitle,
 
 } from "@/components/ui/item"
+
+
+
+
 async function UsersTable() {
 
     const blogs = await getBlogs();
+
     return (
         <div className="flex md:w-full flex-col items-start gap-6 p-2">
             <ItemGroup>
                 {blogs.map((blog) => (
+
                     <Item key={blog.id} variant="outline" className='mb-6 items-start py-4'>
 
                         <ItemMedia variant="icon">
